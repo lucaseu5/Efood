@@ -9,6 +9,16 @@ export const HeaderBar = styled.header`
   width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Alinha os itens horizontalmente no centro */
-  align-items: center; /* Alinha os itens verticalmente no centro */
+  align-items: center;
+`
+
+export const Logo = styled.img`
+  padding-top: 64px;
+  padding-bottom: 136px;
+`
+
+export const Titulo = styled.h1`
+  width: 536px;
+  height: 84px;
+  text-align: center;
 `
