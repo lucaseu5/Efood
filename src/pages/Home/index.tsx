@@ -2,6 +2,8 @@ import ProductsList from '../../components/ProductsList'
 import Restaurant from '../../models/Restaurant'
 import sushi from '../../assets/images/sushi.png'
 import italiana from '../../assets/images/italiana.png'
+import Header from '../../components/Header'
+import { Container } from '../../styles'
 
 const restaurantes: Restaurant[] = [
   {
@@ -62,7 +64,10 @@ const restaurantes: Restaurant[] = [
 
 const Home = () => (
   <>
-    <ProductsList restaurant={restaurantes} />
+    <Header />
+    <Container>
+      <ProductsList restaurant={restaurantes} />
+    </Container>
   </>
 )
 

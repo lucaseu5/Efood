@@ -9,6 +9,7 @@ import {
   Titulo
 } from './styles'
 import estrela from '../../assets/images/estrela.svg'
+import { Link } from 'react-router-dom'
 
 type Props = {
   title: string
@@ -35,7 +36,9 @@ const Product = ({ title, rate, description, infos, image }: Props) => (
         </Rate>
       </TitleDiv>
       <Descricao>{description}</Descricao>
-      <Tag>Saiba Mais</Tag>
+      <Link to="/comidas">
+        <Tag>Saiba Mais</Tag>
+      </Link>
     </TextDiv>
   </Card>
 )
