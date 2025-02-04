@@ -1,13 +1,13 @@
 import Restaurant from '../../models/Restaurant'
 import Product from '../Product'
-import { Container, List } from './styles'
+import { List } from './styles'
 
 export type Props = {
   restaurant: Restaurant[]
 }
 
 const ProductsList = ({ restaurant }: Props) => (
-  <Container>
+  <section>
     <List>
       {restaurant.map((restaurant) => (
         <Product
@@ -20,7 +20,7 @@ const ProductsList = ({ restaurant }: Props) => (
         />
       ))}
     </List>
-  </Container>
+  </section>
 )
 
 export default ProductsList

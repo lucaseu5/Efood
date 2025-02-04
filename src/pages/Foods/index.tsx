@@ -4,6 +4,7 @@ import HeaderBuy from '../../components/HeaderBuy'
 import Food from '../../models/Food'
 import { Container } from '../../styles'
 import pizza from '../../assets/images/pizza.png'
+import { useParams } from 'react-router-dom'
 
 const comidas: Food[] = [
   {
@@ -50,15 +51,19 @@ const comidas: Food[] = [
   }
 ]
 
-const Foods = () => (
-  <>
-    <HeaderBuy />
-    <Banner />
-    <Container>
-      <FoodsList food={comidas} />
-    </Container>
-  </>
-)
+const Foods = () => {
+  const { id } = useParams()
+
+  return (
+    <>
+      <HeaderBuy />
+      <Banner />
+      <Container>
+        <FoodsList food={comidas} />
+      </Container>
+    </>
+  )
+}
 
 export default Foods
 
