@@ -17,9 +17,10 @@ type Props = {
   description: string
   infos: string[]
   image: string
+  id: number
 }
 
-const Product = ({ title, rate, description, infos, image }: Props) => (
+const Product = ({ id, title, rate, description, infos, image }: Props) => (
   <Card>
     <img src={image} alt={title} />
     <Infos>
@@ -36,7 +37,7 @@ const Product = ({ title, rate, description, infos, image }: Props) => (
         </Rate>
       </TitleDiv>
       <Descricao>{description}</Descricao>
-      <Link to="/comidas">
+      <Link to={`/${id}`}>
         <Tag>Saiba Mais</Tag>
       </Link>
     </TextDiv>

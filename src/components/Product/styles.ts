@@ -6,6 +6,14 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 472px;
+  max-height: 398px;
+
+  & > img {
+    width: 472px;
+    height: 217px;
+    object-fit: cover;
+  }
 
   ${TagContainer} {
     margin-right: 8px;
