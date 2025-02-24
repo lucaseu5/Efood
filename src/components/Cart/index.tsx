@@ -3,10 +3,11 @@ import { CartContainer, CartItem, Overlay, Prices, Sidebar } from './styles'
 import pizza from '../../assets/images/image 3.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { close } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
+import { formataPreco } from '../ProductsList'
 
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, foods } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -14,31 +15,35 @@ const Cart = () => {
     dispatch(close())
   }
 
+  const getTotalPrice = () => {
+    return foods.reduce((acumulador, valorAtual) => {
+      return (acumulador += valorAtual.preco)
+    }, 0)
+  }
+
+  const removeFood = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
-          <CartItem>
-            <img src={pizza} />
-            <div>
-              <h3>Nome da comida</h3>
-              <span>R$ 60,90</span>
-            </div>
-            <button type="button" />
-          </CartItem>
-          <CartItem>
-            <img src={pizza} />
-            <div>
-              <h3>Nome da comida</h3>
-              <span>R$ 60,90</span>
-            </div>
-            <button type="button" />
-          </CartItem>
+          {foods.map((food) => (
+            <CartItem key={food.id}>
+              <img src={food.foto} alt={food.nome} />
+              <div>
+                <h3>{food.nome}</h3>
+                <span>{formataPreco(food.preco)}</span>
+              </div>
+              <button onClick={() => removeFood(food.id)} type="button" />
+            </CartItem>
+          ))}
         </ul>
         <Prices>
           <p>Valor total</p>
-          <p>R$ 182,70</p>
+          <p>{formataPreco(getTotalPrice())}</p>
         </Prices>
         <Button>Continuar com a entrega</Button>
       </Sidebar>

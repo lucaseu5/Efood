@@ -11,8 +11,9 @@ import {
 import { Container } from '../../styles'
 import close from '../../assets/images/close.svg'
 import { useDispatch } from 'react-redux'
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 import { FoodItem } from '../../pages/Foods'
+import { formataPreco } from '../ProductsList'
 
 type Props = {
   foods: FoodItem
@@ -23,6 +24,8 @@ const FoodsItem = ({ foods }: Props) => {
 
   const addToCart = () => {
     dispatch(add(foods))
+    dispatch(open())
+    setModalOpen(false)
   }
 
   const [modalOpen, setModalOpen] = useState(false)
@@ -46,7 +49,7 @@ const FoodsItem = ({ foods }: Props) => {
             setModalOpen(true)
           }}
         >
-          Adionar ao carrinho
+          Adicionar ao carrinho
         </Button>
       </Card>
 
@@ -59,7 +62,7 @@ const FoodsItem = ({ foods }: Props) => {
             <p>{foods.descricao}</p>
             <p>Serve: {foods.porcao}</p>
             <button onClick={addToCart}>
-              Adicionar ao carrinho - R${foods.preco}0
+              Adicionar ao carrinho - {formataPreco(foods.preco)}
             </button>
           </ModalContent>
         </Container>

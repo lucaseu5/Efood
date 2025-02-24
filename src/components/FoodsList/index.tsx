@@ -1,5 +1,4 @@
 import { FoodItem } from '../../pages/Foods'
-import { Restaurant } from '../../pages/Home'
 import FoodsItem from '../FoodsItem'
 import { List } from './styles'
 
