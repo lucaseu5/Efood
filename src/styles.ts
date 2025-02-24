@@ -7,6 +7,8 @@ export const cores = {
   rosa: '#E66767'
 }
 
+export const breakpoints = {}
+
 export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;
