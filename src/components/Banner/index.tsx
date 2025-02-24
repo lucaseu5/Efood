@@ -2,11 +2,11 @@ import { Restaurant } from '../../pages/Home'
 import { Bannerimg, Baner, Restaurante, TextBanner, Type } from './styles'
 
 type Props = {
-  foods: Restaurant
+  restaurant: Restaurant
 }
 
-const Banner = ({ foods }: Props) => {
-  if (!foods) {
+const Banner = ({ restaurant }: Props) => {
+  if (!restaurant) {
     return <div>Carregando...</div>
   }
 
@@ -14,10 +14,10 @@ const Banner = ({ foods }: Props) => {
     <>
       <Baner>
         <TextBanner>
-          <Type>{foods.tipo}</Type>
-          <Restaurante>{foods.titulo}</Restaurante>
+          <Type>{restaurant.tipo}</Type>
+          <Restaurante>{restaurant.titulo}</Restaurante>
         </TextBanner>
-        <Bannerimg src={foods.capa} alt="" />
+        <Bannerimg src={restaurant.capa} alt="" />
         <div className="overlay"></div>
       </Baner>
     </>

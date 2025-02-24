@@ -1,27 +1,18 @@
+import { FoodItem } from '../../pages/Foods'
 import { Restaurant } from '../../pages/Home'
 import FoodsItem from '../FoodsItem'
 import { List } from './styles'
 
-type Props = {
-  food: Restaurant['cardapio'][] | undefined
+export type Props = {
+  food: FoodItem[]
 }
 
 const FoodsList = ({ food }: Props) => {
-  if (!food) {
-    return <h3>Carregando...</h3>
-  }
   return (
     <List>
-      {food.map((item) => (
+      {food.map((item: FoodItem) => (
         <li key={item.id}>
-          <FoodsItem
-            title={item.nome}
-            description={item.descricao}
-            image={item.foto}
-            foodName={item.nome}
-            quantidade={item.porcao}
-            value={item.preco}
-          />
+          <FoodsItem foods={item} />
         </li>
       ))}
     </List>

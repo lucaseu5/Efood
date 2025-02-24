@@ -21,3 +21,11 @@ export const Links = styled(Link)`
   font-weight: bold;
   font-size: 18px;
 `
+
+export const CartButton = styled.a`
+  color: ${cores.rosa};
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+`

@@ -3,10 +3,9 @@ import FoodsList from '../../components/FoodsList'
 import HeaderBuy from '../../components/HeaderBuy'
 import { Container } from '../../styles'
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { Restaurant } from '../Home'
+import { useGetFoodsQuery, useGetBannerQuery } from '../../services/api'
 
-interface FoodItem {
+export interface FoodItem {
   foto: string
   preco: number
   id: number
@@ -15,31 +14,31 @@ interface FoodItem {
   porcao: string
 }
 
+export interface Restaurant1 {
+  id: number
+  nome: string
+  cardapio: FoodItem[]
+}
+
 const Foods = () => {
   const { id } = useParams()
-
-  const [restaurant, setRestaurant] = useState<Restaurant>()
-  const [food, setFood] = useState<FoodItem[]>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setRestaurant(res)
-        setFood(res.cardapio)
-      })
-  }, [id])
+  const { data: restaurant } = useGetBannerQuery(id!)
+  const { data: foods } = useGetFoodsQuery(id!)
 
   if (!restaurant) {
+    return <h3>Carregando...</h3>
+  }
+
+  if (!foods) {
     return <h3>Carregando...</h3>
   }
 
   return (
     <>
       <HeaderBuy />
-      <Banner foods={restaurant} />
+      <Banner restaurant={restaurant} />
       <Container>
-        <FoodsList food={food} />
+        <FoodsList food={foods.cardapio} />
       </Container>
     </>
   )

@@ -10,24 +10,21 @@ import {
 } from './styles'
 import { Container } from '../../styles'
 import close from '../../assets/images/close.svg'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
+import { FoodItem } from '../../pages/Foods'
 
 type Props = {
-  title: string
-  description: string
-  image: string
-  quantidade: string
-  foodName: string
-  value: number
+  foods: FoodItem
 }
 
-const FoodsItem = ({
-  title,
-  description,
-  image,
-  foodName,
-  quantidade,
-  value
-}: Props) => {
+const FoodsItem = ({ foods }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(foods))
+  }
+
   const [modalOpen, setModalOpen] = useState(false)
 
   const getDescricao = (descricao: string) => {
@@ -41,9 +38,9 @@ const FoodsItem = ({
   return (
     <>
       <Card>
-        <img src={image} alt={title} />
-        <Title>{title}</Title>
-        <Description>{getDescricao(description)}</Description>
+        <img src={foods.foto} alt={foods.nome} />
+        <Title>{foods.nome}</Title>
+        <Description>{getDescricao(foods.descricao)}</Description>
         <Button
           onClick={() => {
             setModalOpen(true)
@@ -55,13 +52,15 @@ const FoodsItem = ({
 
       <Modal className={modalOpen ? 'visible' : ''}>
         <Container className="container">
-          <img src={image} />
+          <img src={foods.foto} />
           <ModalContent>
             <Close src={close} onClick={() => setModalOpen(false)} />
-            <h4>{foodName}</h4>
-            <p>{description}</p>
-            <p>Serve: {quantidade}</p>
-            <button>Adicionar ao carrinho - R${value}0</button>
+            <h4>{foods.nome}</h4>
+            <p>{foods.descricao}</p>
+            <p>Serve: {foods.porcao}</p>
+            <button onClick={addToCart}>
+              Adicionar ao carrinho - R${foods.preco}0
+            </button>
           </ModalContent>
         </Container>
         <div className="overlay" onClick={() => setModalOpen(false)}></div>
