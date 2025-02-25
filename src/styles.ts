@@ -7,7 +7,10 @@ export const cores = {
   rosa: '#E66767'
 }
 
-export const breakpoints = {}
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
 
 export const GlobalCss = createGlobalStyle`
   * {
@@ -30,4 +33,8 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 120px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
 `

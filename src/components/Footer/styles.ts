@@ -12,7 +12,7 @@ export const Container = styled.footer`
 `
 
 export const Descricao = styled.p`
-  width: 770px;
+  width: 600px;
 `
 
 export const Image = styled.img`
