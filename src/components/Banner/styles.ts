@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Baner = styled.div`
   position: relative;
@@ -25,6 +25,10 @@ export const TextBanner = styled.div`
   transform: translate(-50%, -50%);
   justify-content: space-between;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    padding: 0 16px;
+  }
 `
 
 export const Type = styled.p`

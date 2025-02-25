@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import headerBar from '../../assets/images/Header.png'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const HeaderFoods = styled.header`
@@ -13,6 +13,10 @@ export const HeaderFoods = styled.header`
   justify-content: space-between;
   gap: 30px;
   padding: 0px 171px;
+
+  @media (max-width: ${breakpoints.cell}) {
+    padding: 8px;
+  }
 `
 
 export const Links = styled(Link)`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
@@ -65,6 +65,20 @@ export const Modal = styled.div`
       object-fit: cover;
       width: 280px;
       height: 280px;
+
+      @media (max-width: ${breakpoints.cell}) {
+        max-width: 100%;
+        height: 200px;
+        margin-right: 0;
+        margin-left: 24px;
+        padding-bottom: 10px;
+      }
+    }
+
+    @media (max-width: ${breakpoints.cell}) {
+      max-width: 400px;
+      max-height: 700px;
+      display: block;
     }
   }
 
@@ -103,14 +117,34 @@ export const ModalContent = styled.div`
     border: none;
     padding: 4px 8px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 100px;
+
+    @media (max-width: ${breakpoints.cell}) {
+      margin-top: 20px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      margin-top: 65px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.cell}) {
+    justify-content: center;
+    align-items: center;
   }
 `
 
 export const Close = styled.img`
   position: absolute;
-  top: 10px;
+  top: 0px;
   right: 10px;
   cursor: pointer;
   width: 16px;
   height: 16px;
+
+  @media (max-width: ${breakpoints.cell}) {
+    top: -210px;
+    right: -10px;
+  }
 `

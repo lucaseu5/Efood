@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Container = styled.footer`
   background-color: ${cores.pasta};
@@ -13,6 +13,10 @@ export const Container = styled.footer`
 
 export const Descricao = styled.p`
   width: 600px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 350px;
+  }
 `
 
 export const Image = styled.img`
